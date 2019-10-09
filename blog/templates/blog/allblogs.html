@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load latexify %}
+{% include 'latexify/stylesheets.html' %}
+<html>
+	<body bgcolor="#D9E1CB">
+      		<h1>Valentina Rascón Barajas</h1>
+          {% latexify '\binom{n}{k} = \frac{n!}{k!(n-k)!}' math_block=True %}
+      		<br /> <br />
+     		 <h2>Contenido</h2>
+     		 <hr/>
+     		 {% for blog in  blogs.all %}
+    			<a href="{% url 'detail' blog.id %}">  <h3>{{ blog.title }}</h3></a>
+   			   {{ blog.pub_date_pretty }}
+   			   <br />
+    			  <img src = "{{ blog.image.url }}" height=200 width=200/>
+  			    <br />
+    			  <p>{{ blog.summary }}</p>
+     		 {% endfor %}
+      
+      <center>
+  		&copy; Valentina Rascón Barajas. Facultad de Ciencias, ICN (UNAM),  {% now "Y" %}
+      </center>
+      {% include "latexify/scripts.html" %}
+	</body>
+</html>
